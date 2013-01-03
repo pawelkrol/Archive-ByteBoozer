@@ -1,0 +1,16 @@
+BB.h
+ByteBoozer.xs
+Changes
+cruncher.c
+cruncher.h
+file.h
+Makefile.PL
+MANIFEST
+PatchBool.PL
+README
+typemap
+lib/Archive/ByteBoozer.pm
+t/01-basic.t
+t/02-param-check.t
+t/03-cruncher.t
+t/04-decruncher.t
