@@ -1,4 +1,4 @@
-BB.h
+bb.h
 ByteBoozer.xs
 Changes
 cruncher.c
@@ -6,7 +6,6 @@ cruncher.h
 file.h
 Makefile.PL
 MANIFEST
-PatchBool.PL
 README
 typemap
 lib/Archive/ByteBoozer.pm

@@ -1,5 +1,5 @@
-#ifndef _BB_h_
-#define _BB_h_
+#ifndef _bb_h_
+#define _bb_h_
 
 #ifndef NULL
 #define NULL ((void*)0)
@@ -13,7 +13,13 @@
 #endif
 
 typedef enum { false = 0, true = 1 } bool;
+typedef enum {
+  noDecr = 0,
+  cleanDecr,
+  normalDecr,
+  loadInitDecr
+} decruncherType;
 
 #define memSize 65536
 
-#endif // _BB_h_
+#endif // _bb_h_

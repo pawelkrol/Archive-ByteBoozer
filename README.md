@@ -8,21 +8,21 @@ INSTALLATION
 
 To install this module type the following:
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+    perl Makefile.PL
+    make
+    make test
+    make install
 
 COPYRIGHT AND LICENCE
 ---------------------
 
-ByteBoozer cruncher/decruncher programming:
+ByteBoozer cruncher/decruncher:
 
-Copyright (C) 2004-2006, David Malmborg.
+Copyright (C) 2004-2006, 2008-2009, 2012 David Malmborg.
 
 Archive::ByteBoozer Perl interface:
 
-Copyright (C) 2012 by Pawel Krol.
+Copyright (C) 2012, 2013 by Pawel Krol.
 
 This library is free open source software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.6 or, at your option, any later version of Perl 5 you may have available.
 

@@ -71,7 +71,7 @@ $EXPORT_TAGS{'all'} = [ @{$EXPORT_TAGS{'crunch'}} ];
 our @EXPORT_OK = @{ $EXPORT_TAGS{'all'} };
 our @EXPORT = qw();
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Data::Dumper;
 use IO::Scalar;
@@ -341,17 +341,17 @@ Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
 
 =head1 VERSION
 
-Version 0.01 (2012-04-07)
+Version 0.02 (2013-01-04)
 
 =head1 COPYRIGHT AND LICENSE
 
-ByteBoozer cruncher/decruncher programming:
+ByteBoozer cruncher/decruncher:
 
-Copyright (C) 2004-2006, David Malmborg.
+Copyright (C) 2004-2006, 2008-2009, 2012 David Malmborg.
 
 Archive::ByteBoozer Perl interface:
 
-Copyright (C) 2012 by Pawel Krol.
+Copyright (C) 2012, 2013 by Pawel Krol.
 
 This library is free open source software; you can redistribute it and/or modify it under the same terms as Perl itself, either Perl version 5.8.6 or, at your option, any later version of Perl 5 you may have available.
 

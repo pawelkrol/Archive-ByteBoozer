@@ -33,9 +33,16 @@ bb_crunch(source, start_address)
     CODE:
         File *target;
         Newxz(target, 1, File);
+
+        decruncherType theDecrType = noDecr;
+        if (start_address > 0)
+          theDecrType = normalDecr;
+
+        boolean isRelocated = false;
+
         if (target == NULL)
             XSRETURN_UNDEF;
-        if (!crunch(source, target, start_address))
+        if (!crunch(source, target, start_address, theDecrType, isRelocated))
             XSRETURN_UNDEF;
         RETVAL = target;
     OUTPUT:

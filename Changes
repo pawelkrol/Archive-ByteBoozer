@@ -1,5 +1,9 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
+0.02  2013-01-04
+    - updated "ByteBoozer" source code to version 1.1, which was published by
+      David Malmborg on June the 14th, 2012
+
 0.01  2012-04-07
     - initial version (provides Perl interface to David Malmborg's ByteBoozer,
       supports crunching Commodore data files using the compression algorithm
