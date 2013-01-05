@@ -1,8 +1,15 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
-0.02  2013-01-04
+0.02  2013-01-05
     - updated "ByteBoozer" source code to version 1.1, which was published by
       David Malmborg on June the 14th, 2012
+    - fixed "error: expected identifier before numeric constant", "error: two
+      or more data types in declaration specifiers" and "error: expected ';',
+      identifier or '(' before 'char'" compilation errors by replacing all
+      occurrences of a newly defined "bool" type (first defined in "bb.h")
+      with "boolean" label in the original source code right before packaging
+      the actual release of this module, so that it now successfully compiles
+      also on most non-Linux systems as well as for bleadperl
 
 0.01  2012-04-07
     - initial version (provides Perl interface to David Malmborg's ByteBoozer,

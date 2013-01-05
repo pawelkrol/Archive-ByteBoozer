@@ -341,7 +341,7 @@ Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
 
 =head1 VERSION
 
-Version 0.02 (2013-01-04)
+Version 0.02 (2013-01-05)
 
 =head1 COPYRIGHT AND LICENSE
 

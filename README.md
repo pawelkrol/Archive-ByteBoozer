@@ -13,6 +13,11 @@ To install this module type the following:
     make test
     make install
 
+DOCUMENTATION
+-------------
+
+A comprehensive module documentation is available on [CPAN](http://search.cpan.org/~pawelkrol/Archive-ByteBoozer/lib/Archive/ByteBoozer.pm).
+
 COPYRIGHT AND LICENCE
 ---------------------
 
