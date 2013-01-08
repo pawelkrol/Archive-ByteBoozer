@@ -38,7 +38,7 @@ bb_crunch(source, start_address)
         if (start_address > 0)
           theDecrType = normalDecr;
 
-        boolean isRelocated = false;
+        _bool isRelocated = _false;
 
         if (target == NULL)
             XSRETURN_UNDEF;

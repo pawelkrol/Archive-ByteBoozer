@@ -99,7 +99,15 @@ sub fix_compilation_errors {
     chdir $build_dir;
 
     printf "  * %s\n", "error: expected ';', identifier or '(' before 'char'";
-    my $command = q{perl -pi -e 's/bool(?=[ ;])/boolean/g' *.c *.h};
+    my $command = q{perl -pi -e 's/bool(?=[ ;])/_bool/g' *.c *.h};
+    print "\n    $command\n";
+    system $command;
+
+    printf "\n  * %s\n", "error: expected identifier before numeric constant";
+    $command = q{perl -pi -e 's/true(?=[ ;)])/_true/g' *.c *.h};
+    print "\n    $command";
+    system $command;
+    $command = q{perl -pi -e 's/false(?=[ ;)])/_false/g' *.c *.h};
     print "\n    $command\n";
     system $command;
 
