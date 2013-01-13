@@ -1,5 +1,13 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
+0.04  2013-01-13
+    - fixed "error: two or more data types in declaration specifiers"
+      compilation error on FreeBSD by reordering include directives in
+      "cruncher.h" and "file.h" header files, and thus making sure that "bb.h"
+      is always processed after "sys/types.h" header file (included by
+      "sys/stat.h"), which on FreeBSD redefines a "uint" type without checking
+      if the same type definition has already existed before
+
 0.03  2013-01-08
     - fixed "error: expected identifier before numeric constant" compilation
       error by replacing all occurrences of "true" and "false" constants with
@@ -11,12 +19,12 @@ Revision history for Perl extension Archive::ByteBoozer.
 0.02  2013-01-05
     - updated "ByteBoozer" source code to version 1.1, which was published by
       David Malmborg on June the 14th, 2012
-    - fixed "error: expected ';', identifier or '(' before 'char'" and "error:
-      two or more data types in declaration specifiers" compilation errors by
-      replacing all occurrences of a newly defined "bool" type (first defined
-      in "bb.h") with "_bool" label in the original source code right before
-      packaging the actual release of this module, so that it now successfully
-      compiles also on most non-Linux systems as well as for bleadperl
+    - fixed "error: expected ';', identifier or '(' before 'char'" compilation
+      error by replacing all occurrences of a newly defined "bool" type (first
+      defined in "bb.h") with "_bool" label in the original source code right
+      before packaging the actual release of this module, so that it now
+      successfully compiles also on most non-Linux systems as well as for
+      bleadperl
 
 0.01  2012-04-07
     - initial version (provides Perl interface to David Malmborg's ByteBoozer,

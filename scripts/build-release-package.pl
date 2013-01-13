@@ -98,8 +98,13 @@ sub fix_compilation_errors {
     my $dir = getcwd;
     chdir $build_dir;
 
-    printf "  * %s\n", "error: expected ';', identifier or '(' before 'char'";
-    my $command = q{perl -pi -e 's/bool(?=[ ;])/_bool/g' *.c *.h};
+    print "  * remove mac/windows new line characters\n";
+    my $command = q{find ./ -type f | xargs perl -i -pne 's/\\r\\n?/\\n/g;'};
+    print "\n    $command\n";
+    system $command;
+
+    printf "\n  * %s\n", "error: expected ';', identifier or '(' before 'char'";
+    $command = q{perl -pi -e 's/bool(?=[ ;])/_bool/g' *.c *.h};
     print "\n    $command\n";
     system $command;
 
@@ -119,9 +124,18 @@ sub fix_compilation_errors {
     print "    $command\n";
     system $command;
 
-    print "\n  * remove mac/windows new line characters\n";
-    $command = q{find ./ -type f | xargs perl -i -pne 's/\\r\\n?/\\n/g;'};
+    printf "\n  * %s\n", "error: two or more data types in declaration specifiers";
+    $command = q{perl -pi -e 's!^#include "bb.h"$!#include "file.h" // $&!' cruncher.h};
     print "\n    $command\n";
+    system $command;
+    $command = q{perl -pi -e 's!^#include "file.h"$!#include "bb.h" // $&!' cruncher.h};
+    print "    $command\n";
+    system $command;
+    $command = q{perl -pi -e 's!^#include "bb.h"$!// $&!' file.h};
+    print "    $command\n";
+    system $command;
+    $command = q{perl -pi -e 's!^#include <sys/stat.h>$!$&\n\n#include "bb.h"!' file.h};
+    print "    $command\n";
     system $command;
 
     chdir $dir;
