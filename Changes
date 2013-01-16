@@ -4,7 +4,7 @@ Revision history for Perl extension Archive::ByteBoozer.
     - fixed "undefined symbol 'mXPUSHs'" compilation error for Perl 5.10.0 by
       removing "mXPUSHs()" macro from the XS code (according to perl5101delta
       "mXPUSHs()" macro for pushing SVs on the stack and mortalizing them has
-      been added in Perl 5.10.1)
+      been introduced in Perl 5.10.1)
 
 0.04  2013-01-13
     - fixed "error: two or more data types in declaration specifiers"
