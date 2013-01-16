@@ -54,7 +54,9 @@ SV*
 bb_data(file)
         File *file
     PPCODE:
-        mXPUSHs(newSVpv(file->data, file->size));
+        # Push string (PV) with data on the stack and mortalize it:
+        SV *fileData = sv_2mortal(newSVpv(file->data, file->size));
+        XPUSHs(fileData);
 
 # my $size = bb_size($file);
 
@@ -62,7 +64,9 @@ unsigned int
 bb_size(file)
         File *file
     PPCODE:
-        mXPUSHs(newSViv(file->size));
+        # Push unsigned integer (UV) with size on the stack and mortalize it:
+        SV *fileSize = sv_2mortal(newSVuv(file->size));
+        XPUSHs(fileSize);
 
 # bb_free($source, $target);
 
