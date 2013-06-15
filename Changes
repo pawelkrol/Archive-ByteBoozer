@@ -1,5 +1,10 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
+0.06  2013-06-15
+    - introduced an additional "crunch" parameter named "relocate_output_up_to",
+      allowing to relocate compressed data to the given end address (as opposite
+      to the "relocate_output", which relocates data to the given start address)
+
 0.05  2013-01-16
     - fixed "undefined symbol 'mXPUSHs'" compilation error for Perl 5.10.0 by
       removing "mXPUSHs()" macro from the XS code (according to perl5101delta
@@ -36,4 +41,3 @@ Revision history for Perl extension Archive::ByteBoozer.
     - initial version (provides Perl interface to David Malmborg's ByteBoozer,
       supports crunching Commodore data files using the compression algorithm
       implemented via ByteBoozer)
-

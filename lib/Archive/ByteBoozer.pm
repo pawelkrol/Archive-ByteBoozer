@@ -35,6 +35,10 @@ Archive::ByteBoozer - Perl interface to David Malmborg's "ByteBoozer", a data cr
   my $start_address = 0x0800;
   crunch(source => $original, target => $crunched, relocate_output => $start_address);
 
+  # Relocate compressed data to the given end address:
+  my $end_address = 0x2800;
+  crunch(source => $original, target => $crunched, relocate_output_up_to => $end_address);
+
   # Enable verbose output while crunching data:
   my $verbose = 1;
   crunch(source => $original, target => $crunched, verbose => $verbose);
@@ -117,6 +121,19 @@ C<relocate_output> is used for setting up a new start address of the compressed 
     crunch(source => $in, target => $out, relocate_output => $start_address);
 
 This will relocate compressed data to the given start address of $0800 by writing an appropriate information in the output stream.
+
+=head3 relocate_output_up_to
+
+C<relocate_output_up_to> is used for setting up a new start address of the compressed data by shifting it up to the given end address (by default data is shifted and aligned to fill in the memory up to the address of $fff9, however you might want to align your data to a different end address - it is where this option becomes handy):
+
+  my $end_address = 0x2800;
+  crunch(source => $original, target => $crunched, relocate_output_up_to => $end_address);
+
+This will relocate compressed data to some address below $2800 by writing an appropriate information in the output stream.
+
+In the above example the following assumptions are true: your source code or other used data begins at $2800 and you want to load your compressed soundtrack file somewhere between $1000 and $2800, however you may still want to execute your decrunching routine later. This will not work if you load your compressed file at $1000, because uncompressed data would begin to overwrite your loaded data shortly after you invoked decruncher routine, leading to data corruption and truly unpredictable results. What you want to do is to load your file at any address that will provide data safety. C<relocate_output_up_to> parameter ensures that.
+
+C<relocate_output_up_to> and C<relocate_output> parameters are mutually exclusive. C<relocate_output_up_to> always takes precedence over C<relocate_output>.
 
 =head3 precede_initial_address
 
@@ -221,11 +238,22 @@ sub _precede_initial_address {
     return;
 }
 
+sub _get_address_to_relocate_output_up_to {
+    my ($params) = @_;
+    my $data_length = length ($params->{_crunched_data}) - 0x02;
+    my $relocate_output_up_to = $params->{relocate_output_up_to};
+    my $address_to_relocate_data = $relocate_output_up_to - $data_length;
+    return $address_to_relocate_data;
+}
+
 sub _relocate_output {
     my ($params) = @_;
     my $relocate_output = $params->{relocate_output};
-    return unless defined $relocate_output;
-    my @memory_address = _memory_address_bytes($relocate_output);
+    my $relocate_output_up_to = $params->{relocate_output_up_to};
+    return unless defined $relocate_output || defined $relocate_output_up_to;
+    my $address_to_relocate_data =
+        defined $relocate_output_up_to ? _get_address_to_relocate_output_up_to($params) : $relocate_output;
+    my @memory_address = _memory_address_bytes($address_to_relocate_data);
     substr $params->{_crunched_data}, 0, 2, join '', @memory_address;
     return;
 }
@@ -259,6 +287,9 @@ sub crunch {
                 is_valid_memory_address   => sub { looks_like_number $_[0] && $_[0] >= 0x0000 && $_[0] <= 0xffff },
             } },
             relocate_output         => { type => SCALAR, optional => 1, callbacks => {
+                is_valid_memory_address   => sub { looks_like_number $_[0] && $_[0] >= 0x0000 && $_[0] <= 0xffff },
+            } },
+            relocate_output_up_to   => { type => SCALAR, optional => 1, callbacks => {
                 is_valid_memory_address   => sub { looks_like_number $_[0] && $_[0] >= 0x0000 && $_[0] <= 0xffff },
             } },
             replace_initial_address => { type => SCALAR, optional => 1, callbacks => {
@@ -329,6 +360,7 @@ There are no known bugs at the moment. Please report any bugs or feature request
 =head1 EXPORT
 
 C<Archive::ByteBoozer> exports nothing by default.
+
 You are allowed to explicitly import the crunch subroutine into the caller's namespace either by specifying its name in the import list (C<crunch>) or by using the module with the C<:crunch> tag.
 
 =head1 SEE ALSO
