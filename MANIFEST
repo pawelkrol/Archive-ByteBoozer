@@ -13,3 +13,4 @@ t/01-basic.t
 t/02-param-check.t
 t/03-cruncher.t
 t/04-decruncher.t
+t/05-relocate-output-up-to.t
