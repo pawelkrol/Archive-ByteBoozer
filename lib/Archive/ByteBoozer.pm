@@ -75,7 +75,7 @@ $EXPORT_TAGS{'all'} = [ @{$EXPORT_TAGS{'crunch'}} ];
 our @EXPORT_OK = @{ $EXPORT_TAGS{'all'} };
 our @EXPORT = qw();
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use Data::Dumper;
 use IO::Scalar;
@@ -373,7 +373,7 @@ Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
 
 =head1 VERSION
 
-Version 0.06 (2013-06-15)
+Version 0.07 (2013-09-21)
 
 =head1 COPYRIGHT AND LICENSE
 
