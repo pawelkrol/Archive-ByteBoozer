@@ -3,13 +3,13 @@ use Archive::ByteBoozer qw(:crunch);
 use IO::Scalar;
 use Test::Deep;
 use Test::Exception;
-use Test::More tests => 28;
+use Test::More tests => 27;
 #########################
 {
     my %params = ();
     throws_ok(
         sub { crunch(%params) },
-        qr/source.*target/,
+        qr/source.*target|target.*source/,
         'mandatory source and target parameters missing',
     );
 }
@@ -50,7 +50,7 @@ use Test::More tests => 28;
     my %params = (source => $io, target => $io);
     throws_ok(
         sub { crunch(%params) },
-        qr/is_not_the_same_as_target/,
+        qr/is_not_the_same_as_source|is_not_the_same_as_target/,
         'source and target parameters point to the same object',
     );
 }
@@ -217,7 +217,7 @@ use Test::More tests => 28;
     throws_ok(
         sub { crunch(%params) },
         qr/source.*closed/,
-        'input filehandle is closed',
+        'input stream bad filehandle',
     );
 }
 #########################
@@ -243,19 +243,6 @@ use Test::More tests => 28;
         sub { crunch(%params) },
         qr/target.*closed/,
         'output stream bad filehandle',
-    );
-}
-#########################
-{
-    my @data = (0x00, 0x10, 0x01, 0x02, 0x03, 0x04, 0x05);
-    my $data = join '', map { chr $_ } @data;
-    my $in = new IO::Scalar \$data;
-    my $out = new IO::Handle;
-    my %params = (source => $in, target => $out);
-    throws_ok(
-        sub { crunch(%params) },
-        qr/target.*closed/,
-        'output stream filehandle is closed',
     );
 }
 #########################
