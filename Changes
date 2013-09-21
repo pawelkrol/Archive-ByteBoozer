@@ -4,6 +4,8 @@ Revision history for Perl extension Archive::ByteBoozer.
     - switched IO::Capture to Capture::Tiny, which is able to correctly capture
       contents written into the standard output file handle
     - fixed two randomly failing unit-tests, removed one duplicate test case
+    - fixed "Use of uninitialized value in subroutine entry" warning during
+      test suite execution
 
 0.06  2013-06-15
     - introduced an additional "crunch" parameter named "relocate_output_up_to",

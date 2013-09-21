@@ -1,5 +1,6 @@
 #########################
 use Archive::ByteBoozer qw(:crunch);
+use Capture::Tiny qw(capture_stderr);
 use IO::Scalar;
 use Test::Deep;
 use Test::Exception;
@@ -305,7 +306,10 @@ use Test::More tests => 27;
     my $out = new IO::Scalar;
     my $initial_address = 0x8000;
     my %params = (source => $in, target => $out, precede_initial_address => $initial_address);
-    crunch(%params);
+    # Capture "Use of uninitialized value in subroutine entry" warning:
+    capture_stderr {
+        crunch(%params);
+    };
     my $crunched_data = <$out>;
     my @crunched_data = split '', $crunched_data;
     my @expected_data = map { chr $_ } (0xf6, 0xff, 0xff, 0x00, 0x80, 0xff);
