@@ -1,7 +1,7 @@
 #########################
 use Archive::ByteBoozer qw(:crunch);
+use Capture::Tiny qw(capture_stdout);
 use File::Temp qw(tempfile unlink0);
-use IO::Capture::Stdout;
 use IO::File;
 use IO::Scalar;
 use Test::Deep;
@@ -27,14 +27,12 @@ use Test::More tests => 9;
     my $in = new IO::Scalar \$data;
     my $out = new IO::Scalar;
     my %params = (source => $in, target => $out, verbose => 1);
-    my $capture = IO::Capture::Stdout->new();
-    $capture->start();
-    crunch(%params);
-    $capture->stop();
-    my $captured_message = $capture->read;
-    chomp $captured_message;
+    my $stdout = capture_stdout {
+        crunch(%params);
+    };
+    chomp $stdout;
     my $expected_message = '[Archive::ByteBoozer] Compressed 7 bytes into 12 bytes.';
-    is($captured_message, $expected_message, 'enabling verbose output while crunching data');
+    is($stdout, $expected_message, 'enabling verbose output while crunching data');
 }
 #########################
 {

@@ -1,5 +1,9 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
+0.07  2013-09-21
+    - switched IO::Capture to Capture::Tiny which is able to correctly capture
+      the contents written into standard output and standard error filehandles
+
 0.06  2013-06-15
     - introduced an additional "crunch" parameter named "relocate_output_up_to",
       allowing to relocate compressed data to the given end address (as opposite
