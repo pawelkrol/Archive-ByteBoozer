@@ -229,7 +229,7 @@ use Test::More tests => 27;
     my %params = (source => $in, target => $out);
     throws_ok(
         sub { crunch(%params) },
-        qr/undefined value.*reference/,
+        qr/source file IO::Handle is closed/,
         'input stream is closed',
     );
 }
@@ -256,7 +256,7 @@ use Test::More tests => 27;
     my %params = (source => $in, target => $out);
     throws_ok(
         sub { crunch(%params) },
-        qr/undefined value.*reference/,
+        qr/target file IO::Handle is closed/,
         'output stream is closed',
     );
 }

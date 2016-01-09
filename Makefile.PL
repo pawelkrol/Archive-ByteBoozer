@@ -11,7 +11,7 @@ WriteMakefile(
                              File::Temp       => 0,
                              IO::File         => 0,
                              IO::Scalar       => 0,
-                             Params::Validate => 0,
+                             Params::Validate => '1.21',
                              Scalar::Util     => 0,
                              Test::Deep       => 0,
                              Test::Exception  => 0,

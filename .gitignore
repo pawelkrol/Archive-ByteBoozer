@@ -6,11 +6,14 @@ inc/
 Build
 !Build/
 Build.bat
+ByteBoozer.bs
+ByteBoozer.c
 .last_cover_stats
 Makefile
 Makefile.old
 MANIFEST.bak
 META.yml
+MYMETA.json
 MYMETA.yml
 nytprof.out
 pm_to_blib
