@@ -18,7 +18,7 @@ WriteMakefile(
                              Test::More       => 0,
                          },
     ($] >= 5.005 ?
-      (AUTHOR         => 'Pawel Krol <pawelkrol@cpan.org>') : ()),
+      (AUTHOR         => 'Pawel Krol <djgruby@gmail.com>') : ()),
     DEFINE            => '',
     OBJECT            => 'ByteBoozer.o cruncher.o',
     OPTIMIZE          => '-O2',

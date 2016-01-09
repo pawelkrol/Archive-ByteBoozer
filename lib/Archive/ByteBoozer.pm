@@ -369,7 +369,7 @@ L<IO::File>, L<IO::Scalar>
 
 =head1 AUTHOR
 
-Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
+Pawel Krol, E<lt>djgruby@gmail.comE<gt>.
 
 =head1 VERSION
 
