@@ -1,5 +1,8 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
+0.08  2016-01-09
+    - make test suite pass for the latest version of Params::Validate (>= 1.21)
+
 0.07  2013-09-21
     - switched IO::Capture to Capture::Tiny, which is able to correctly capture
       contents written into the standard output file handle
