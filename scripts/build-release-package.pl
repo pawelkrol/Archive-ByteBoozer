@@ -27,7 +27,8 @@ help() if $help or not defined $output_dir or not -d $output_dir;
 
 my $version_number = get_version_number($version_from);
 my $project_dir = sprintf '%s-%s', $package_name, $version_number;
-my $target_file = sprintf '%s/%s.tar.gz', $output_dir, $project_dir;
+my $target_name = sprintf '%s.tar.gz', $project_dir;
+my $target_file = sprintf '%s/%s', $output_dir, $target_name;
 
 die "File already exists: $target_file" if -e $target_file;
 
@@ -45,7 +46,7 @@ my $temp_dir = tempdir(CLEANUP => 1);
 my $build_dir = setup_build_dir($temp_dir, $project_dir, $manifest_file);
 
 fix_compilation_errors($build_dir);
-compress_files($build_dir, $project_dir, $target_file);
+compress_files($build_dir, $target_file, $target_name);
 
 print "\nBuild successful!\n\n";
 
@@ -144,15 +145,20 @@ sub fix_compilation_errors {
 }
 
 sub compress_files {
-    my ($build_dir, $project_dir, $target_file) = @_;
+    my ($build_dir, $target_file, $target_name) = @_;
 
-    printf qq{\nCompressing project build into "tar.gz" archive:\n\n  * target file: %s\n\n}, $target_file;
+    printf qq{\nCompressing project build into "tar.gz" archive:\n\n  * target file: %s\n\n}, $target_name;
 
     my $dir = getcwd;
-    chdir "$build_dir/..";
+    chdir $build_dir;
 
-    my $command = sprintf 'tar czf %s %s', $target_file, $project_dir;
-    print "    $command\n";
+    my $command = 'perl Makefile.PL && make dist';
+    print "    $command\n\n";
+    system $command;
+
+
+    $command = sprintf 'mv %s %s', $target_name, $target_file;
+    print "\n    $command\n";
     system $command;
 
     chdir $dir;
