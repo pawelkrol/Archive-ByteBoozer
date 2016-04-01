@@ -3,6 +3,11 @@ Archive-ByteBoozer
 
 Archive::ByteBoozer package provides a Perl interface to David Malmborg's "ByteBoozer", a data cruncher for Commodore files written in C. The following operations are supported: reading data from any given IO:: interface, packing data using the compression algorithm implemented via "ByteBoozer", and writing data into any given IO:: interface.
 
+VERSION
+-------
+
+Version 0.09 (2016-04-01)
+
 INSTALLATION
 ------------
 

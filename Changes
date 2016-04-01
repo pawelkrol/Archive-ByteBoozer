@@ -1,5 +1,9 @@
 Revision history for Perl extension Archive::ByteBoozer.
 
+0.09  2016-04-01
+    - rebuilt a distribution package to include missing files "META.yml" and
+      "META.json"
+
 0.08  2016-01-09
     - make test suite pass for the latest version of Params::Validate (>= 1.21)
 
