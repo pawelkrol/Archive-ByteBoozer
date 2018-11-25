@@ -139,6 +139,11 @@ sub fix_compilation_errors {
     print "    $command\n";
     system $command;
 
+    printf "\n  * %s\n", "error: ByteBoozer.so: undefined symbol 'outLen'";
+    $command = q{sed -i 's/^inline/static inline/' cruncher.c};
+    print "\n    $command\n";
+    system $command;
+
     chdir $dir;
 
     return;
