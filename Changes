@@ -20,6 +20,8 @@ Revision history for Perl extension Archive::ByteBoozer.
       'RETVAL'" (when using a PPCODE section no manipulation of the RETVAL
       variable is required, the section may use direct stack manipulation to
       place output values on the stack)
+    - commented out two params check tests failing due to Params::Validate's
+      bug report RT#127811: "validate" crashes on a closed IO::Scalar object
 
 0.09  2016-04-01
     - rebuilt a distribution package to include missing files "META.yml" and
