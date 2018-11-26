@@ -373,7 +373,7 @@ Pawel Krol, E<lt>djgruby@gmail.comE<gt>.
 
 =head1 VERSION
 
-Version 0.10 (2018-11-25)
+Version 0.10 (2018-11-26)
 
 =head1 COPYRIGHT AND LICENSE
 

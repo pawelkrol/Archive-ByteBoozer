@@ -8,7 +8,7 @@ Archive::ByteBoozer package provides a Perl interface to David Malmborg's "ByteB
 VERSION
 -------
 
-Version 0.10 (2018-11-25)
+Version 0.10 (2018-11-26)
 
 INSTALLATION
 ------------
