@@ -22,4 +22,19 @@ WriteMakefile(
     DEFINE            => '',
     OBJECT            => 'ByteBoozer.o cruncher.o',
     OPTIMIZE          => '-O2',
+    META_MERGE        => {
+        'meta-spec' => {
+            'version' => 2,
+        },
+        'resources' => {
+            'bugtracker' => {
+                'web' => 'https://github.com/pawelkrol/Archive-ByteBoozer/issues',
+            },
+            'repository' => {
+                'type' => 'git',
+                'url'  => 'git://github.com/pawelkrol/Archive-ByteBoozer.git',
+                'web'  => 'https://github.com/pawelkrol/Archive-ByteBoozer.git',
+            },
+        },
+    },
 );

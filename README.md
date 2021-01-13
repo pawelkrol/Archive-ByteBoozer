@@ -1,7 +1,7 @@
 Archive-ByteBoozer
 ==================
 
-[![CPAN version](https://badge.fury.io/pl/Archive-ByteBoozer.svg)](http://search.cpan.org/~pawelkrol/Archive-ByteBoozer/lib/Archive/ByteBoozer.pm)
+[![CPAN version](https://badge.fury.io/pl/Archive-ByteBoozer.png)](https://metacpan.org/pod/Archive::ByteBoozer)
 
 Archive::ByteBoozer package provides a Perl interface to David Malmborg's "ByteBoozer", a data cruncher for Commodore files written in C. The following operations are supported: reading data from any given IO:: interface, packing data using the compression algorithm implemented via "ByteBoozer", and writing data into any given IO:: interface.
 
@@ -23,7 +23,7 @@ To install this module type the following:
 DOCUMENTATION
 -------------
 
-A comprehensive module documentation is available on [CPAN](http://search.cpan.org/~pawelkrol/Archive-ByteBoozer/lib/Archive/ByteBoozer.pm).
+A comprehensive module documentation is available on [CPAN](https://metacpan.org/pod/Archive::ByteBoozer).
 
 COPYRIGHT AND LICENCE
 ---------------------
